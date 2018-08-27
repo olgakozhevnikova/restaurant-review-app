@@ -47,6 +47,9 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   padding: 25px;
   text-align: center;
   text-transform: uppercase;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
 /* ====================== Navigation ====================== */
 nav {
@@ -57,6 +60,8 @@ nav {
 }
 nav h1 {
   margin: auto;
+  display: flex;
+  height: 100%;
 }
 nav h1 a {
   color: #fff;
@@ -64,6 +69,7 @@ nav h1 a {
   font-weight: 200;
   letter-spacing: 10px;
   text-transform: uppercase;
+  margin: auto;
 }
 #breadcrumb {
     padding: 10px 40px 16px;
@@ -109,6 +115,7 @@ nav h1 a {
   height: 50px;
   background-color: #3397DB;
   align-items: center;
+  display: flex;
 }
 .filter-options h2 {
   color: white;
@@ -191,7 +198,7 @@ nav h1 a {
 }
 .inside #map-container {
   background: blue none repeat scroll 0 0;
-  height: 87%;
+  height: 81%;
   position: fixed;
   right: 0;
   top: 80px;
@@ -204,8 +211,8 @@ nav h1 a {
 }
 .inside #footer {
   bottom: 0;
-  position: absolute;
-  width: 50%;
+  position: fixed;
+  width: 100%;
 }
 #restaurant-name {
   color: #f18200;
@@ -234,12 +241,22 @@ nav h1 a {
   padding: 2px 0;
   text-align: center;
   text-transform: uppercase;
-	width: 90%;
+	width: 100%;
 }
-#restaurant-container, #reviews-container {
+#restaurant-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
+  height: 45%;
+  position: fixed;
+  right: 0;
+  top: 80px;
+  width: 50%;
+}
+#reviews-container {
+  height: 35%;
+  position: fixed;
+  left: 0;
+  top: 26.5rem;
   width: 50%;
 }
 #reviews-container {
