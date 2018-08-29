@@ -25,10 +25,13 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function (event) {
-	event.respondWith(
-		caches.match(event.request).then(function (response) {
-			if (response) return response;
-			return fetch(event.request);
-		})
-	);
+	if (event.request.url.indexOf('https://maps.googleapis.com/maps/api/js?key=AIzaSyBSBdeHrWWU7GEbOF54AGQZt81GyLGBzZo&libraries=places&callback=initMap') == 0) {
+		event.respondWith(
+			caches.match(event.request).then(function (response) {
+				if (response) return response;
+				return fetch(event.request);
+			})
+		);
+	}
+	
 });
