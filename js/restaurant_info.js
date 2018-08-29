@@ -1,6 +1,6 @@
 let restaurant;
 var newMap;
-
+const google = window.google;
 /**
  * Initialize map as soon as the page is loaded.
  */
