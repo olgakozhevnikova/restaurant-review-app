@@ -1,29 +1,29 @@
 let restaurant;
 var newMap;
+
 /**
  * Initialize map as soon as the page is loaded.
  */
-document.addEventListener('DOMContentLoaded', (event) => {  
-  initMap();
+document.addEventListener('DOMContentLoaded', (event) => {
+  fetchRestaurantFromURL();
 });
 
-window.initMap = () => {
-  fetchRestaurantFromURL((restaurant) => {
-    self.map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 16,
-      center: restaurant.latlng,
-      scrollwheel: false
-    });
-    fillBreadcrumb();
-    DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
+initMap = (restaurant) => {
+  self.map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 16,
+    center: restaurant.latlng,
+    scrollwheel: false
   });
+  fillBreadcrumb();
+  DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
 }
+
 
 /**
  * Get current restaurant from page URL.
  */
-fetchRestaurantFromURL = (callback) => {
-  if (self.restaurant) { // restaurant already fetched!
+fetchRestaurantFromURL = () => {
+  if (self.restaurant) {// restaurant already fetched!
     callback(null, self.restaurant)
     return;
   }
@@ -38,7 +38,6 @@ fetchRestaurantFromURL = (callback) => {
         return;
       }
       fillRestaurantHTML();
-      callback(null, restaurant)
     });
   }
 }
@@ -66,6 +65,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     fillRestaurantHoursHTML();
   }
   // fill reviews
+  initMap(restaurant);
   fillReviewsHTML();
 }
 
